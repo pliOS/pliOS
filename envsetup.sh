@@ -151,6 +151,6 @@ BUILD_HAL := ${BUILD_HAL}
 BUILD_CORE := ${BUILD_CORE}
 BUILD_SPIN := ${BUILD_SPIN}
 
-include \$(PLIOS_ROOT)/plios/includes/main.mk
+include \$(PLIOS_ROOT)/pliOS/includes/main.mk
 EOL
 }
