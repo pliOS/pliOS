@@ -53,10 +53,14 @@ do
     fi
 done
 
+read -p "Where to build: [$(pwd)/out] " BUILD_DIR
+BUILD_DIR=${BUILD_DIR:-$(pwd)/out}
+
 echo "Building pliOS ${SPIN} ${BUILD_TYPE} build for ${BOARD}"
 
 tee >${PLIOS_ROOT}/Makefile <<EOL
 PLIOS_ROOT := ${PLIOS_ROOT}
+PLIOS_OUT := ${BUILD_DIR}
 
 PLIOS_BOARD := ${BOARD}
 PLIOS_SPIN := ${SPIN}

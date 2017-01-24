@@ -10,11 +10,11 @@ all: toolchain
 INCLUDE_DIR := ${PLIOS_ROOT}/build/includes
 
 export PATH := ${PLIOS_ROOT}/build/scripts:$PATH
-export PATH := ${PLIOS_ROOT}/out/toolchain/c/bin:$PATH
-export PATH := ${PLIOS_ROOT}/out/toolchain/go/root/bin:$PATH
+export PATH := ${PLIOS_OUT}/toolchain/c/bin:$PATH
+export PATH := ${PLIOS_OUT}/toolchain/go/root/bin:$PATH
 
-export GOROOT := ${PLIOS_ROOT}/out/toolchain/go/root
-export GOPATH := ${PLIOS_ROOT}/out/toolchain/go/path
+export GOROOT := ${PLIOS_OUT}/toolchain/go/root
+export GOPATH := ${PLIOS_OUT}/toolchain/go/path
 
 include ${INCLUDE_DIR}/boards/${PLIOS_BOARD}.mk
 include ${INCLUDE_DIR}/arch/${PLIOS_ARCH}.mk
