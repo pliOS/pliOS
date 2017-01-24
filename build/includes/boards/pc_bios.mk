@@ -3,9 +3,4 @@
 # Use of this source code is governed by a MIT-style license that can be found
 # in the LICENSE file.
 
-export CROSS_COMPILE=x86_64-unknown-linux-musl-
-export GOOS=linux
-export GOARCH=amd64
-
-export PLIOS_ARCH=x86_64
-export PLIOS_TOOLCHAIN=x86_64-unknown-linux-musl
+PLIOS_ARCH := x86_64

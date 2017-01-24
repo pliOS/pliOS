@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Copyright (c) 2017 The pliOS Authors. All rights reserved.
+#
+# Use of this source code is governed by a MIT-style license that can be found
+# in the LICENSE file.
+
+export PLIOS_ROOT=$(pwd)
+
+if [ -f ${PLIOS_ROOT}/Makefile ];
+then
+   echo "Error - already configured. Please delete ${PLIOS_ROOT}/Makefile to reconfigure."
+   exit 1
+fi
+
+BOARDS="pc_bios"
+SPINS="desktop"
+BUILD_TYPES="debug prod"
+
+PS3="Board: "
+
+select BOARD in ${BOARDS};
+do
+    if [ -z "${BOARD}" ];
+    then
+        echo "Please enter a valid choice"
+    else
+        break
+    fi
+done
+
+PS3="Spin: "
+
+select SPIN in ${SPINS};
+do
+    if [ -z "${SPIN}" ];
+    then
+        echo "Please enter a valid choice"
+    else
+        break
+    fi
+done
+
+PS3="Build type: "
+
+select BUILD_TYPE in ${BUILD_TYPES};
+do
+    if [ -z "${BUILD_TYPE}" ];
+    then
+        echo "Please enter a valid choice"
+    else
+        break
+    fi
+done
+
+echo "Building pliOS ${SPIN} ${BUILD_TYPE} build for ${BOARD}"
+
+tee >${PLIOS_ROOT}/Makefile <<EOL
+PLIOS_ROOT := ${PLIOS_ROOT}
+
+PLIOS_BOARD := ${BOARD}
+PLIOS_SPIN := ${SPIN}
+
+include \$(PLIOS_ROOT)/build/includes/main.mk
+EOL
