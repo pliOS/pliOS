@@ -6,11 +6,11 @@
 PLIOS_GO_TARBALL := go1.7.4.linux-amd64.tar.gz
 PLIOS_GO_TARBALL_URL := https://storage.googleapis.com/golang/${PLIOS_GO_TARBALL}
 
-.PHONY: toolchain toolchain_c toolchain_go
+.PHONY: toolchain
 
-toolchain: toolchain_c toolchain_go
+toolchain: ${PLIOS_TOOLCHAIN_GO} ${PLIOS_TOOLCHAIN_C}
 
-toolchain_go: ${PLIOS_OUT}/toolchain/go
+PLIOS_TOOLCHAIN_GO := ${PLIOS_OUT}/toolchain/go
 
 ${PLIOS_OUT}/toolchain/go: ${PLIOS_OUT}/dl/${PLIOS_GO_TARBALL}
 	@mkdir -p ${PLIOS_OUT}/toolchain/go/path
@@ -22,6 +22,3 @@ ${PLIOS_OUT}/dl/${PLIOS_GO_TARBALL}:
 	@mkdir -p ${PLIOS_OUT}/dl
 	@echo "===> Downloading golang"
 	@cd ${PLIOS_OUT}/dl && curl -LO --progress-bar ${PLIOS_GO_TARBALL_URL}
-
-CURRENT_DIRECTORY := ${PLIOS_ROOT}/toolchains
--include ${PLIOS_ROOT}/toolchains/pliOS.mk

@@ -5,7 +5,7 @@
 
 .PHONY: all
 
-all: toolchain
+all: toolchain kernel
 
 INCLUDE_DIR := ${PLIOS_ROOT}/build/includes
 
@@ -16,6 +16,8 @@ export PATH := ${PLIOS_OUT}/toolchain/go/root/bin:${PATH}
 export GOROOT := ${PLIOS_OUT}/toolchain/go/root
 export GOPATH := ${PLIOS_OUT}/toolchain/go/path
 
-include ${INCLUDE_DIR}/boards/${PLIOS_BOARD}.mk
+include ${PLIOS_ROOT}/boards/${PLIOS_BOARD}/pliOS.mk
+
 include ${INCLUDE_DIR}/arch/${PLIOS_ARCH}.mk
 include ${INCLUDE_DIR}/toolchain.mk
+include ${INCLUDE_DIR}/kernel.mk

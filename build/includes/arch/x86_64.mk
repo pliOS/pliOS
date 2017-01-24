@@ -12,7 +12,7 @@ PLIOS_TOOLCHAIN_TARBALL:= amd-2016.11-19-x86_64-amd-linux-gnu-i686-pc-linux-gnu.
 PLIOS_TOOLCHAIN_BASEURL := https://sourcery.mentor.com/GNUToolchain/package14747/public/x86_64-amd-linux-gnu/
 PLIOS_TOOLCHAIN_URL := ${PLIOS_TOOLCHAIN_BASEURL}${PLIOS_TOOLCHAIN_TARBALL}
 
-toolchain_c: ${PLIOS_OUT}/toolchain/c ${PLIOS_OUT}/staging/lib64/ld-linux-x86-64.so.2
+PLIOS_TOOLCHAIN_C := ${PLIOS_OUT}/toolchain/c ${PLIOS_OUT}/staging/lib64/ld-linux-x86-64.so.2
 
 ${PLIOS_OUT}/staging/lib64/ld-linux-x86-64.so.2:
 	@mkdir -p ${PLIOS_OUT}/staging
