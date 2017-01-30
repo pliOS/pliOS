@@ -10,12 +10,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
-    apt-get install -y build-essential libncurses5-dev libssl-dev
-    apt-get install -y exuberant-ctags git bc
-
-    dpkg --add-architecture i386
-
-    apt-get update
-    apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+    apt-get install -y build-essential git xorriso
+    wget "https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64"
+    install jq-linux64 /usr/bin/jq
+    rm jq-linux64
   SHELL
 end

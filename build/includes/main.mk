@@ -5,7 +5,9 @@
 
 .PHONY: all
 
-all: toolchain kernel
+all: fsimage
+
+sysroot: toolchain kernel
 
 INCLUDE_DIR := ${PLIOS_ROOT}/build/includes
 

@@ -5,8 +5,12 @@
 
 PLIOS_ARCH := x86_64
 
-PLIOS_KERNEL_TARBALL_URL := https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.4.44.tar.xz
-PLIOS_KERNEL_TARBALL := linux-4.4.44.tar.xz
-PLIOS_KERNEL_DIRECTORY := linux-4.4.44
+PLIOS_KERNEL_REPO := pliOS/kernel_pc_bios
 
-PLIOS_KERNEL_CONFIG := ${PLIOS_ROOT}/boards/pc_bios/kernel.config
+.PHONY: fsimage
+
+fsimage: sysroot
+	@mkdir -p ${PLIOS_OUT}/intermediate/isoroot/boot/grub
+	@cp ${PLIOS_ROOT}/boards/pc_bios/grub.cfg ${PLIOS_OUT}/intermediate/isoroot/boot/grub
+	@cp ${PLIOS_OUT}/intermediate/vmlinuz ${PLIOS_OUT}/intermediate/isoroot/boot
+	@grub-mkrescue ${PLIOS_OUT}/intermediate/isoroot -o ${PLIOS_OUT}/fsimage.iso
