@@ -23,3 +23,5 @@ include ${PLIOS_ROOT}/boards/${PLIOS_BOARD}/pliOS.mk
 include ${INCLUDE_DIR}/arch/${PLIOS_ARCH}.mk
 include ${INCLUDE_DIR}/toolchain.mk
 include ${INCLUDE_DIR}/kernel.mk
+
+include ${PLIOS_ROOT}/core/pliOS.mk

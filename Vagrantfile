@@ -10,7 +10,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
-    apt-get install -y build-essential git xorriso
+    apt-get install -y build-essential git libguestfs-tools
+    update-guestfs-appliance
     wget "https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64"
     install jq-linux64 /usr/bin/jq
     rm jq-linux64

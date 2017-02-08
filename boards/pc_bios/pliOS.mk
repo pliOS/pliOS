@@ -10,7 +10,12 @@ PLIOS_KERNEL_REPO := pliOS/kernel_pc_bios
 .PHONY: fsimage
 
 fsimage: sysroot
-	@mkdir -p ${PLIOS_OUT}/intermediate/isoroot/boot/grub
-	@cp ${PLIOS_ROOT}/boards/pc_bios/grub.cfg ${PLIOS_OUT}/intermediate/isoroot/boot/grub
-	@cp ${PLIOS_OUT}/intermediate/vmlinuz ${PLIOS_OUT}/intermediate/isoroot/boot
-	@grub-mkrescue ${PLIOS_OUT}/intermediate/isoroot -o ${PLIOS_OUT}/fsimage.iso
+	@echo "===> Making fs image"
+	@sudo mkdir -p ${PLIOS_OUT}/rootfs/sbin
+	@sudo mkdir -p ${PLIOS_OUT}/rootfs/bin
+	@sudo mkdir -p ${PLIOS_OUT}/rootfs/proc
+	@sudo mkdir -p ${PLIOS_OUT}/rootfs/sys
+	@sudo mkdir -p ${PLIOS_OUT}/rootfs/dev
+	@sudo mkdir -p ${PLIOS_OUT}/rootfs/run
+	@sudo cp -R ${PLIOS_ROOT}/rootfs/. ${PLIOS_OUT}/rootfs
+	@sudo virt-make-fs -t ext4 ${PLIOS_OUT}/rootfs ${PLIOS_OUT}/bin/rootfs.img

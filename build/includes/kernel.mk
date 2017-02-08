@@ -5,9 +5,9 @@
 
 .PHONY: kernel
 
-kernel: ${PLIOS_OUT}/intermediate/vmlinuz
+kernel: ${PLIOS_OUT}/bin/vmlinuz
 
-${PLIOS_OUT}/intermediate/vmlinuz:
-	@mkdir -p ${PLIOS_OUT}/intermediate/
+${PLIOS_OUT}/bin/vmlinuz:
+	@mkdir -p ${PLIOS_OUT}/bin
 	@echo "===> Downloading kernel"
-	@cd ${PLIOS_OUT}/intermediate/ && download_release.sh $(PLIOS_KERNEL_REPO) vmlinuz
+	@cd ${PLIOS_OUT}/bin && download_release.sh $(PLIOS_KERNEL_REPO) vmlinuz

@@ -1,0 +1,17 @@
+[environment]
+LANG = "UTF-8"
+
+[triggers]
+init = [
+    "mount ext4 /dev/root / remount", 
+    "start sh",
+]
+
+shutdown = [
+    "stopwaitkill sh 100ms",
+    "umount /",
+    "reboot shutdown",
+]
+
+[services.sh]
+program = "sh"
